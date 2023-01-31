@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './PriceDetails.module.css';
 
-const PriceDetails = ({ userCartData }) => {
+const PriceDetails = ({ userCartData, handlePlaceOrder }) => {
   const TotalMRP = userCartData?.reduce((acc, item) => {
     return acc + item.totalPrice;
   }, 0);
@@ -38,7 +38,9 @@ const PriceDetails = ({ userCartData }) => {
             <strong>Rs.{TotalAmount}</strong>
           </div>
         </div>
-        <button className={styles.addBtn}>PLACE ORDER</button>
+        <button onClick={handlePlaceOrder} className={styles.addBtn}>
+          PLACE ORDER
+        </button>
       </div>
     </div>
   );

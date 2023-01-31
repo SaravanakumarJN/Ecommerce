@@ -149,6 +149,18 @@ const deleteProductFromCart = (id) => {
     .then((res) => res.data);
 };
 
+const placeOrder = () => {
+  let token = getItem('token');
+
+  return axios
+    .post(`${base_url}/api/order/place-order`, {}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => res.data);
+};
+
 export {
   loginUser,
   registerUser,
@@ -166,4 +178,5 @@ export {
   deleteProductFromCart,
   updateProductInCart,
   getProductByCategory,
+  placeOrder,
 };

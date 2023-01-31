@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {
   getUserCartDetails,
+  placeOrder,
   updateProductInCart,
 } from '../../utilities/networkRequests';
 import { useAtom } from 'jotai/react';
@@ -14,6 +15,7 @@ import { deleteProductFromCart } from '../../utilities/networkRequests';
 const Cart = () => {
   const [userCartData, setUserCartData] = useAtom(userCartAtom);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [isPlacingOrder, setIsPlacingOrder] = useState(false);
 
   const handleQuantityChange = (change, data) => {
     let updatedQuantity = data.quantity + change;
@@ -21,30 +23,32 @@ const Cart = () => {
       return;
     }
 
-    setIsUpdating(true);
-    const payload = {
-      quantity: updatedQuantity,
-    };
-    updateProductInCart(data._id, payload)
-      .then((res) => {
-        if (!res.error) {
-          handleGetUserCartDetails();
-        }
-      })
-      .catch((error) => {
-        if (error.response) {
-          TOAST(
-            error.response.data.message
-              ? error.response.data.message
-              : error.response.data
-          );
-        } else {
-          TOAST(error.message);
-        }
-      })
-      .finally(() => {
-        setIsUpdating(false);
-      });
+    if (!isUpdating) {
+      setIsUpdating(true);
+      const payload = {
+        quantity: updatedQuantity,
+      };
+      updateProductInCart(data._id, payload)
+        .then((res) => {
+          if (!res.error) {
+            handleGetUserCartDetails();
+          }
+        })
+        .catch((error) => {
+          if (error.response) {
+            TOAST(
+              error.response.data.message
+                ? error.response.data.message
+                : error.response.data
+            );
+          } else {
+            TOAST(error.message);
+          }
+        })
+        .finally(() => {
+          setIsUpdating(false);
+        });
+    }
   };
 
   const handleDelete = (id) => {
@@ -88,6 +92,34 @@ const Cart = () => {
       });
   };
 
+  const handlePlaceOrder = () => {
+    setIsPlacingOrder(true);
+
+    if (!isPlacingOrder) {
+      placeOrder()
+        .then((res) => {
+          if (!res.error) {
+            TOAST('Order placed successfully');
+            handleGetUserCartDetails();
+          }
+        })
+        .catch((error) => {
+          if (error.response) {
+            TOAST(
+              error.response.data.message
+                ? error.response.data.message
+                : error.response.data
+            );
+          } else {
+            TOAST(error.message);
+          }
+        })
+        .finally(() => {
+          setIsPlacingOrder(false);
+        });
+    }
+  };
+
   useEffect(() => {
     handleGetUserCartDetails();
   }, []);
@@ -111,7 +143,10 @@ const Cart = () => {
       </div>
       <div className={styles.costDetails}>
         <h3>Payment Details</h3>
-        <PriceDetails userCartData={userCartData}></PriceDetails>
+        <PriceDetails
+          userCartData={userCartData}
+          handlePlaceOrder={handlePlaceOrder}
+        ></PriceDetails>
       </div>
     </div>
   );
