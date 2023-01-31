@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+}
+.container > div {
+  margin: 15px;
+}
+.cartList {
+  width: 60%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.costDetails {
+  width: 40%;
+  padding: 20px 30px;
+  background-color: white;
+  max-height: 90vh;
+  max-width: 350px;
+}

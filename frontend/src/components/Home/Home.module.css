@@ -1,0 +1,16 @@
+.container {
+  width: 95vw;
+}
+
+.utils_container {
+  display: flex;
+  margin: 10px 0;
+  flex-direction: row-reverse;
+}
+
+.product_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}

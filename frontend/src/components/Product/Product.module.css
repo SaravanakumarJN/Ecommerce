@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+}
+.image {
+  width: 40%;
+  padding: 10px 20px;
+  background-color: white;
+}
+.content {
+  width: 60%;
+  padding: 20px 20px;
+  background-color: white;
+}
+.image > img {
+  margin: 10px;
+}
+
+.addBtn {
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  background-color: #ff0066;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: 550;
+}
+
+.addBtn:hover {
+  background-color: #e6005c;
+}
+
+.content > h2,
+.content > h3 {
+  margin: 10px 0;
+}
+
+.content > p {
+  color: #737373;
+}
+
+.quantity_selector {
+  display: flex;
+  margin: 15px 0;
+}
+
+.quantity_selector > div {
+  margin: 0 10px;
+}

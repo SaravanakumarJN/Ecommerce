@@ -1,0 +1,56 @@
+.card {
+  width: 100%;
+  max-width: 650px;
+  height: 200px;
+  border: 1px solid #e6e6e6;
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 5px auto;
+}
+
+.image {
+  width: 35%;
+  padding: 10px 10px;
+}
+
+.image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  width: 65%;
+  padding: 10px 10px;
+}
+
+.content > * {
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+.content > .prodtag {
+  font-weight: 400 !important;
+  color: #a6a6a6;
+  overflow: hidden;
+}
+
+.removeBtn {
+  width: 100px;
+  height: 25px;
+  background-color: transparent;
+  border: 1px solid #ff0066;
+  outline: none;
+  color: #ff0066;
+  border-radius: 3px;
+  margin: 5px 0;
+}
+
+.quantity_selector {
+  display: flex;
+  margin: 15px 0;
+}
+
+.quantity_selector > div {
+  margin: 0 10px;
+}

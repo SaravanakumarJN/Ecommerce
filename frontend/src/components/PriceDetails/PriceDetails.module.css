@@ -1,0 +1,38 @@
+.table {
+  margin: 20px 0px 30px;
+}
+.table > div {
+  margin: 10px 0;
+}
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flexgrow {
+  flex-grow: 1;
+}
+
+.bottom {
+  text-align: center;
+}
+
+.bottom > div {
+  margin: 20px 0;
+}
+
+.addBtn {
+  width: 150px;
+  height: 40px;
+  font-size: 15px;
+  background-color: #ff0066;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: 550;
+}
+
+.addBtn:hover {
+  background-color: #e6005c;
+}
